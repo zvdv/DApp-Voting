@@ -38,6 +38,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "_candidate",
+						"type": "string"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -102,11 +115,11 @@
 	},
 	"sources": {
 		"vote.sol": {
-			"keccak256": "0x4d00af410abdd7c16f0c8fe1ba79181d0b7c95a180ebe57fcbbe082ae9e2ae60",
+			"keccak256": "0x6a289a823c0196fd5a38199e29428e676e0158a40cb0e4e36f7c5f8344cee4b5",
 			"license": "UNLICENSED",
 			"urls": [
-				"bzz-raw://3ac96da19f6275a164e02d2f2ee7addc351fa4ec0863726c3bd476634e3fd619",
-				"dweb:/ipfs/QmTNQVs379CxpKkuYwo7yJvmPvWWTRjpe3AkhmHcnsrB9W"
+				"bzz-raw://1108e47c0e3e1d453244acc40fe6f30e2fbff885077137f053faf85e9dff6d4e",
+				"dweb:/ipfs/QmW6rK1XUnMijhvxAYsLHZuSFB9BDGHtRKX1YWwyAK3wNm"
 			]
 		}
 	},
