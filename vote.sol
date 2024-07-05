@@ -2,6 +2,8 @@
 
 pragma solidity ^0.8.25;
 
+import "hardhat/console.sol";
+
 contract Vote {
     string[] public candidates;
     address[] public voters;
@@ -16,11 +18,15 @@ contract Vote {
     }
 
     modifier validCandidate(string memory _candidate) {
+        bool foundMatch = false;
         for (uint256 i = 0; i < candidates.length; i++) {
             if (keccak256(abi.encodePacked(candidates[i])) == keccak256(abi.encodePacked(_candidate))) {
+                foundMatch = true;
                 _;
             }
         }
-        revert("Invalid candidate.");
+        if (foundMatch == false){
+            revert("Invalid candidate.");
+        }
     }
 }
