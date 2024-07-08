@@ -15,13 +15,27 @@ contract Vote {
 
     constructor(string[] memory _candidates) {
         candidates = _candidates;
+        for (uint i = 0; i < candidates.length; i++){
+            votes[candidates[i]].exists = true;
+        }
     }
 
-    function getCandidate(uint idx) public view returns (string memory){
+    function getCandidate(uint idx) public view returns(string memory){
+        require(idx < candidates.length, "Invalid candidate index.");
         return candidates[idx];
     }
 
-    function vote (string memory _candidate) validCandidate(_candidate) public {
+    function getVoters(uint idx) public view returns(address){
+        require(idx < voters.length, "Invalid voter index.");
+        return voters[idx];
+    }
+
+    function getVotes(string memory candidate) public view returns(uint){
+        require(votes[candidate].exists == true, "Candidate does not exist.");
+        return votes[candidate].votes;
+    }
+
+    function vote(string memory _candidate) validCandidate(_candidate) public {
         votes[_candidate].votes++;
     }
 
