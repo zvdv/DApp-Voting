@@ -13,11 +13,21 @@ contract Vote {
         candidates = _candidates;
     }
 
-    function getCandidate(uint idx) public view returns (string memory){
+    function getCandidate(uint idx) public view returns(string memory){
+        require(idx < candidates.length, "Invalid candidate index.");
         return candidates[idx];
     }
 
-    function vote (string memory _candidate) validCandidate(_candidate) public {
+    function getVoters(uint idx) public view returns(address){
+        require(idx < voters.length, "Invalid voter index.");
+        return voters[idx];
+    }
+
+    function getVotes(string memory candidate) public view returns(uint){
+        return votes[candidate];
+    }
+
+    function vote(string memory _candidate) validCandidate(_candidate) public {
         votes[_candidate]++;
     }
 
