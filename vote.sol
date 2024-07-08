@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.25;
 
-import "hardhat/console.sol";
+//import "hardhat/console.sol";
 
 contract Vote {
     string[] public candidates;
@@ -11,6 +11,10 @@ contract Vote {
 
     constructor(string[] memory _candidates) {
         candidates = _candidates;
+    }
+
+    function getCandidate(uint idx) public view returns (string memory){
+        return candidates[idx];
     }
 
     function vote (string memory _candidate) validCandidate(_candidate) public {
