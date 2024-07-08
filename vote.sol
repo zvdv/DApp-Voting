@@ -7,7 +7,11 @@ pragma solidity ^0.8.25;
 contract Vote {
     string[] public candidates;
     address[] public voters;
-    mapping(string=>uint) public votes;
+    struct Candidate {
+        bool exists;
+        uint votes;
+    }
+    mapping(string=>Candidate) public votes;
 
     constructor(string[] memory _candidates) {
         candidates = _candidates;
@@ -18,7 +22,7 @@ contract Vote {
     }
 
     function vote (string memory _candidate) validCandidate(_candidate) public {
-        votes[_candidate]++;
+        votes[_candidate].votes++;
     }
 
     modifier validCandidate(string memory _candidate) {

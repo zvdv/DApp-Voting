@@ -8,14 +8,14 @@
     const contractAddress = '0x8A0F33F92ba8C6fCA1a35dD9a5b0f571920a1ca6';
     const contract = new Web3.eth.Contract(VoteContractABI, contractAddress);
 
-    let candidate1 = contract.candidates[0].call();
+    //let candidate1 = contract.candidates[0].call();
     //document.getElementById('Candidate1').innerHTML = "candidate1";
 
 </script>
 </head>
 <body>
     <h1>Voting</h1>
-    <button onclick="document.getElementById('Candidate1').innerHTML = candidate1;">Update</button>
+    <button onclick="contract.methods.vote('Banana').call();">Update</button>
     <p id="Candidate1"></p>
 </body>
 </html>
