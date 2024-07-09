@@ -5,9 +5,12 @@
     import Web3 from 'web3';
     import VoteContractABI from './VoteContractABI.json';
 
-    const contractAddress = '0x8A0F33F92ba8C6fCA1a35dD9a5b0f571920a1ca6';
+    const contractAddress = '0x5Bf9Bdc6D8E70986F166997dBdABC4A04D308d1e';
+    // Address with original deployment (no getters): 0x8A0F33F92ba8C6fCA1a35dD9a5b0f571920a1ca6
     const contract = new Web3.eth.Contract(VoteContractABI, contractAddress);
 
+    const candidates = contract.methods.getCandidates().call();
+    //const candidate1 = candidates[0];
     //let candidate1 = contract.candidates[0].call();
     //document.getElementById('Candidate1').innerHTML = "candidate1";
 
@@ -15,7 +18,12 @@
 </head>
 <body>
     <h1>Voting</h1>
-    <button onclick="contract.methods.vote('Banana').call();">Update</button>
-    <p id="Candidate1"></p>
+    <button onclick="document.getElementById('type').innerHTML = typeof candidates">Typeof candidates</button>
+    <p id="type"></p>
+    <button onclick="document.getElementById('candidates').innerHTML = 'Candidates: ' + candidates">Update candidates</button>
+    <p id="candidates"></p>
+    <button onclick="console.log(candidates[0])">Candidates[0]</button>
+    <button onclick="console.log(candidates[1])">Candidates[1]</button>
+
 </body>
 </html>
