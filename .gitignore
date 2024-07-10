@@ -1,4 +1,7 @@
 node_modules/
 .deps/
-artifacts/
+artifacts
 *.json
+.next
+next-env.d.ts
+dist
