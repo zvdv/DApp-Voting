@@ -4,7 +4,7 @@ import Web3 from 'web3';
 //import MetaMaskProvider from 'web3';
 import VoteMetaData from '../artifacts/Vote_metadata.json';
 
-const VoteContractABI = VoteMetaData.abi;
+const VoteContractABI = VoteMetaData.output.abi;
 const web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider('https://rpc.sepolia.org'));
 
 // if (MetaMaskProvider.window.ethereum){
@@ -12,10 +12,10 @@ const web3 = new Web3(Web3.givenProvider || new Web3.providers.HttpProvider('htt
 //     alert("No ethereum provider.");
 //     const web3 = new Web3();
 // }
-const contractAddress = '0x8A0F33F92ba8C6fCA1a35dD9a5b0f571920a1ca6';
+const contractAddress = '0x5Bf9Bdc6D8E70986F166997dBdABC4A04D308d1e';
 const contract = new web3.eth.Contract(VoteContractABI, contractAddress);
 
-//const candidates = contract.methods.getCandidates().call();
+const candidates = contract.methods.candidates(0).call();
 
 export default function RootLayout() {
     return (
@@ -23,7 +23,10 @@ export default function RootLayout() {
         <body>
             <div>
             <h1>Voting</h1>
-            <p>did we make it?</p>
+            <p>abi type: {typeof VoteContractABI}</p>
+            <p>metadata type: {typeof VoteMetaData}</p>
+            <p>metadata keys: {Object.keys(VoteMetaData)}</p>
+            <p>candidates: {candidates}</p>
             </div>
         </body>
         </html>
